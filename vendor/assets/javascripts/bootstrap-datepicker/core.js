@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-datepicker.js
+ * bootstgap-datepicker.js
  * Repo: https://github.com/eternicode/bootstrap-datepicker/
  * Demo: http://eternicode.github.io/bootstrap-datepicker/
  * Docs: http://bootstrap-datepicker.readthedocs.org/
@@ -988,7 +988,11 @@
             break;
           case 'td':
             if (target.is('.day') && !target.is('.disabled')){
-              day = parseInt(target.text(), 10)||1;
+              if (this.selectWeek) {
+                day = target.parent().find("td").eq(0).text();
+              } else {
+                day = parseInt(target.text(), 10)||1;
+              }
               year = this.viewDate.getUTCFullYear();
               month = this.viewDate.getUTCMonth();
               if (target.is('.old')){
