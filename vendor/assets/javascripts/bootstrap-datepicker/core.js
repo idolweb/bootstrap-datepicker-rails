@@ -989,7 +989,11 @@
           case 'td':
             if (target.is('.day') && !target.is('.disabled')){
               if (this.selectWeek) {
-                day = target.parent().find("td").eq(0).text();
+                var firstDayIndex = 0;
+                if (this.o.calendarWeeks){
+                  firstDayIndex = 1;
+                }
+                day = target.parent().find("td").eq(firstDayIndex).text();
               } else {
                 day = parseInt(target.text(), 10)||1;
               }
